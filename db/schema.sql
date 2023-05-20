@@ -1,6 +1,26 @@
 -- DROP DATABASE
-DROP DATABASE IF EXISTS ecommerce_db;
+-- DROP DATABASE IF EXISTS ecommerce_db;
 
 -- CREATE DATABASE
-CREATE DATABASE ecommerce_db;
+--CREATE DATABASE ecommerce_db;
 
+-- CREATE TABLE categories
+CREATE TABLE categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  category_name VARCHAR(50) NOT NULL
+);
+
+-- CREATE TABLE tags
+CREATE TABLE tags (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  tag_name VARCHAR(50) NOT NULL
+);
+
+-- CREATE TABLE products
+CREATE TABLE products (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  product_name VARCHAR(255) NOT NULL,
+  price DECIMAL(10, 2) NOT NULL,
+  category_id INT,
+  FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE SET NULL
+);
